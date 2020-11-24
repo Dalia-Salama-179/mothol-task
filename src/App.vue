@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import {mapState} from 'vuex'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'App',
+        computed: {
+            ...mapState(['user', 'token',])
+        },
+        /*mounted() {
+            this.$http.post('https://www.keden-edu.com/kntra/api/login', {pin_code: 4000})
+                .then((response)=>{
+                    console.log(response.data.data.token);
+                    this.$http.post('https://www.keden-edu.com/kntra/api/users/1/details', {
+                        page: 1
+                    }, {
+                        headers: {
+                            'Authorization': 'Bearer '+ response.data.data.token
+                        }
+                    }).then(res => {
+                        console.log(res)
+                    })
+            })
+        }*/
+    }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

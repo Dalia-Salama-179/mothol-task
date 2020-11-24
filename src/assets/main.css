@@ -1,0 +1,17 @@
+/* Login page */
+.login-page {
+  background-color: #0093FF;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-page .login-form {
+  background-color: #fff;
+  padding: 35px 30px;
+  border-radius: 10px;
+  width: 350px;
+}
+
+/*# sourceMappingURL=main.css.map */

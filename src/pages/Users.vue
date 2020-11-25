@@ -78,12 +78,17 @@
         <!--table to show all users-->
         <div class="card m-2">
             <div class="card-body">
-                <div class="text-right">
-                    <button class="btn btn-primary mb-2"
+                <div class="d-flex mb-2">
+                    <button class="btn btn-primary mr-2"
                             data-toggle="modal"
                             data-target="#userForm"
                             @click="userInAction = true">Add User
                     </button>
+                    <export-excel :data="users.data"
+                                  class="btn btn-dark"
+                                  name="Users">
+                        Export
+                    </export-excel>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -110,7 +115,11 @@
                                 <td>{{user.brand_name}}</td>
                                 <td>{{user.country}}</td>
                                 <td>{{user.nationality}}</td>
-                                <td>{{user.active}}</td>
+                                <td>
+                                    <span v-if="user.active == 1">Active</span>
+                                    <span v-else class="text-danger">Inactive</span>
+                                    <a href="javascipt:void(0)" class="mx-2" @click.prevent="changeStatus(user.id)">Change</a>
+                                </td>
                                 <td>
                                     <a href="javascript:void(0)"
                                        data-toggle="modal"
@@ -262,9 +271,15 @@
              * EditUser
              */
             EditUser(user) {
-                console.log(user)
                 this.userToEdit = user;
                 this.userInAction = true
+            },
+
+            changeStatus(id) {
+                users.changeStatus(id)
+                    .then(() => {
+                        this.getUsers()
+                    })
             }
         }
     }

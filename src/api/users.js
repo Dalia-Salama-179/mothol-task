@@ -58,4 +58,26 @@ export default {
                 })
         })
     },
+
+    /**
+     * Change user status
+     * @param {number} id
+     * @returns {Promise<unknown>}
+     */
+    changeStatus(id) {
+        return new Promise((resolve, reject) => {
+            Axios.post(`https://www.keden-edu.com/kntra/api/users/${id}/change_status`, {
+
+            }, {
+                headers: {
+                    'Authorization': 'Bearer '+ Vuex.state.token
+                }
+            }).then(res => {
+                resolve(res.data.data)
+            })
+                .catch(errors => {
+                    reject(errors.response.data.errors)
+                })
+        })
+    },
 }

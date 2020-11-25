@@ -35,7 +35,7 @@ export default new Router({
             component: Login,
             beforeEnter: guestGuard
         },{
-            path: '/users',
+            path: '/',
             component: users,
             beforeEnter: authGuard
         },

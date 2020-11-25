@@ -27,5 +27,5 @@ export default new Vuex.Store({
             commit('setUser', user);
             return state.user
         }
-    },
+    }
 })

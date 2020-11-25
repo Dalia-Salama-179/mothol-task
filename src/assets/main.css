@@ -1,3 +1,10 @@
+body {
+  background-color: whitesmoke;
+}
+body p {
+  margin-bottom: 0;
+}
+
 /* Login page */
 .login-page {
   background-color: #0093FF;
@@ -12,6 +19,47 @@
   padding: 35px 30px;
   border-radius: 10px;
   width: 350px;
+}
+
+.custom-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.width-200 {
+  width: 200px;
+}
+
+.width-150 {
+  width: 150px;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.select2-container--default .select2-selection--single {
+  border: 1px solid #ced4da;
+  height: 38px;
+}
+.select2-container--default .select2-selection--single:focus {
+  outline: none !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 14px;
+  height: 38px;
+  line-height: 38px;
+}
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  font-size: 12px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 38px;
+}
+
+.select2-results__option {
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=main.css.map */

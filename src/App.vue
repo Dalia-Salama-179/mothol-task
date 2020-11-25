@@ -5,7 +5,10 @@
 </template>
 
 <script>
+    import $ from 'jquery'
     import {mapState} from 'vuex'
+    window.jQuery = $;
+    window.$ = $;
 
     export default {
         name: 'App',

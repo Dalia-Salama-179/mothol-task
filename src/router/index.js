@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store/index'
 import Login from "../pages/Login";
-import users from "../pages/users";
+import users from "../pages/Users";
 
 Vue.use(Router);
 

@@ -90,7 +90,8 @@
                         Export
                     </export-excel>
                 </div>
-                <div class="table-responsive">
+
+                <div v-show="!loading" class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                         <tr class="bg-info text-white">
@@ -131,12 +132,12 @@
                             </tr>
                         </template>
                         <tr v-else class="text-center">
-                            <td colspan="7">There are no users to show</td>
+                            <td colspan="9">There are no users to show</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div v-show="!loading">
                     <p>Page {{currentPage}} of {{lastPage}}</p>
                     <div class="width-150">
                         <select class="pagination-options" style="width: 100%">
@@ -147,6 +148,7 @@
                         </select>
                     </div>
                 </div>
+                <p class="text-center" v-show="loading">Loading ...</p>
             </div>
         </div>
 
@@ -206,7 +208,8 @@
                 currentPage: 1,
                 lastPage: null,
                 userInAction: false,
-                userToEdit: null
+                userToEdit: null,
+                loading: false
             }
         },
         watch: {
@@ -245,6 +248,7 @@
         },
         methods: {
             getUsers() {
+                this.loading = true;
                 this.$http.post('https://www.keden-edu.com/kntra/api/users/list', {
                     ...this.filter
                 }, {
@@ -252,10 +256,11 @@
                         'Authorization': 'Bearer ' + this.$store.state.token
                     }
                 }).then(res => {
+                    this.loading = false;
                     this.users = res.data.data.data;
                     this.currentPage = res.data.data.data.current_page;
                     this.lastPage = res.data.data.data.last_page;
-                })
+                }).catch(() => this.loading = false)
             },
 
             /**

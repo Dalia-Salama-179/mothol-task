@@ -23,6 +23,7 @@ export default {
 
     /**
      * Get all regions assigned to specific country
+     * @api {POST} https://www.keden-edu.com/kntra/api/regions/dropdown/list/:country_id
      * @param {number} country_id
      */
     getRegions(country_id) {
@@ -41,6 +42,9 @@ export default {
 
     /**
      * Add and edit user
+     * @api {POST} https://www.keden-edu.com/kntra/api/users/:id/save
+     * @param {number} id
+     * @param {object} data
      */
     submitUser(id, data) {
         return new Promise((resolve, reject) => {
@@ -61,8 +65,9 @@ export default {
 
     /**
      * Change user status
+     * @api {POST} https://www.keden-edu.com/kntra/api/users/:id/change_status
      * @param {number} id
-     * @returns {Promise<unknown>}
+     * @returns {Promise} represents changing status response
      */
     changeStatus(id) {
         return new Promise((resolve, reject) => {

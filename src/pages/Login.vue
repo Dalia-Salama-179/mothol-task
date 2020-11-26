@@ -30,7 +30,7 @@
                 this.$http.post('https://www.keden-edu.com/kntra/api/login', {pin_code: this.pin_code})
                     .then(res => {
                         this.$store.commit('setUser', res.data.data);
-                        this.$router.push('/users')
+                        this.$router.push('/')
                     }).catch(() => {
                         this.errors = 'Enter valid code !'
                     })

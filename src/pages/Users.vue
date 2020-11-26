@@ -243,7 +243,8 @@
             this.getUsers();
 
             $('#userForm').on('hidden.bs.modal', function () {
-                that.userInAction = false
+                that.userInAction = false;
+                that.userToEdit = null
             })
         },
         methods: {
@@ -281,10 +282,12 @@
             },
 
             changeStatus(id) {
+                this.loading = true;
                 users.changeStatus(id)
                     .then(() => {
+                        this.loading = false;
                         this.getUsers()
-                    })
+                    }).catch(() => this.loading = false)
             }
         }
     }

@@ -56,7 +56,7 @@
                 <label class="width-150">Gender*</label>
                 <div class="width-200">
                     <AppSelect2 :options="['Female', 'Male']"
-                                :value="userToEdit.gender"
+                                :value="userToEdit? userToEdit.gender: null"
                                 @optionSelected="opt =>{ $set(form, 'gender', opt); delete errors.gender}"></AppSelect2>
                     <p class="text-danger small" v-if="errors.hasOwnProperty('gender')">{{errors.gender[0]}}</p>
 
@@ -68,7 +68,7 @@
                 <label class="width-150">Department*</label>
                 <div class="width-200">
                     <AppSelect2 :options="filterLists.departments" :keys="['id', 'name']"
-                                :value="userToEdit.department_id"
+                                :value="userToEdit? userToEdit.department_id: null"
                                 @optionSelected="opt => {$set(form, 'department_id', opt); $delete(errors, 'department_id')}"></AppSelect2>
                     <p class="text-danger small" v-if="errors.hasOwnProperty('department_id')">
                         {{errors.department_id[0]}}</p>
@@ -80,7 +80,7 @@
                 <label class="width-150">Country*</label>
                 <div class="width-200">
                     <AppSelect2 :options="filterLists.countries" :keys="['id', 'name']"
-                                :value="userToEdit.country_id"
+                                :value="userToEdit? userToEdit.country_id: null"
                                 @optionSelected="opt => {form.country_id = opt; delete errors.country_id}"></AppSelect2>
                     <p class="text-danger small" v-if="errors.hasOwnProperty('country_id')">{{errors.country_id[0]}}</p>
 
